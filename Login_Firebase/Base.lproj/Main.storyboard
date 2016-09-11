@@ -351,7 +351,7 @@
                     </view>
                     <connections>
                         <outlet property="inputCode" destination="Gnh-th-SMI" id="XDO-WD-U3e"/>
-                        <segue destination="HaG-fQ-vca" kind="presentation" id="hPt-lR-7IF"/>
+                        <segue destination="HaG-fQ-vca" kind="presentation" identifier="codeValidated" id="hPt-lR-7IF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nqd-6N-PYM" userLabel="First Responder" sceneMemberID="firstResponder"/>

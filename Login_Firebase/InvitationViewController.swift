@@ -41,20 +41,34 @@ class InvitationViewController: UIViewController {
             
         })
         
-        
-        
     }
     
     @IBAction func ValidateCode(sender: AnyObject) {
         if (inputCode.text != codeRetrived) {
             print("validataion failed, please contact joeyzhouaus@gmail.com for enquiries")
+            
         }else{
             print("congratulations, you can start to create your own business page")
-        
+            
+            //create the alert
+            let alert = UIAlertController(title: "Congratulations!!!", message: "Hey, the future Master cheif, You are the Chosen one, hope the force be with you", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            //create an action
+            let okAction = UIAlertAction(title:"ok", style: .Default, handler: { action in
+                
+                //when the user tapped the ok button, navigate the user to the page sign in or sign up
+                self.navigateToSignInPage()
+                
+            
+            })
+            
+            //register the ok action to the alert view
+            alert.addAction(okAction)
+            
+            //show the alert view window
+            self.presentViewController(alert, animated: true, completion: nil)
+            
         }
- 
-     
-        
     }
     
     
@@ -62,6 +76,13 @@ class InvitationViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {})
         
         
+    }
+    
+    
+    func navigateToSignInPage(){
+        self.performSegueWithIdentifier("codeValidated", sender: self)
+    
+    
     }
 
 }
