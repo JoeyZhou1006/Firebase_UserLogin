@@ -43,6 +43,8 @@ class InvitationViewController: UIViewController {
         
     }
     
+    
+    //the method that connect to the firebase database to check whether the code entered is validated or not
     @IBAction func ValidateCode(sender: AnyObject) {
         if (inputCode.text != codeRetrived) {
             print("validataion failed, please contact joeyzhouaus@gmail.com for enquiries")

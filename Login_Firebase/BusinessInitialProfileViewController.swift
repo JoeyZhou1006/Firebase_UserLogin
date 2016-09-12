@@ -32,9 +32,14 @@ class BusinessInitialProfileViewController: UIViewController {
     func checkWhetherNameExists(){
         
         
-        
-        
+    
     
     }
+    
+    @IBAction func dismissCurrentView(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    
 
 }
