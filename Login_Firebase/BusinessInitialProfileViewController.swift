@@ -19,10 +19,18 @@ class BusinessInitialProfileViewController: UIViewController {
     //here should have a reference uid of the user
     var Uid = ""
     
+    override func viewWillAppear(animated: Bool) {
+        print("signed up users uid is "+self.Uid)
+    }
+    
     
     @IBOutlet weak var inputName: UITextField!
   
     @IBAction func submitBusinessName(sender: AnyObject) {
+        //sent the current users name associated with the uid to the firebase storage
+        
+        
+        storage
         
         
     }

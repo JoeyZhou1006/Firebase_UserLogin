@@ -34,6 +34,10 @@ class SignUpNewUserViewController: UIViewController
         FIRAuth.auth()?.createUserWithEmail(newUserEmail.text!, password: newUserPassword.text!, completion: { (user: FIRUser?, error) in
             if error != nil {
                 print(error)
+                
+                let alert = UIAlertController(title: "Opposs", message: "Seems like some one already registered with this account", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                self.presentViewController(alert, animated: true, completion: nil)
                 return
             }
             else{

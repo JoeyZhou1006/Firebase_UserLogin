@@ -26,11 +26,14 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eth-Cb-UVF">
                                 <rect key="frame" x="142" y="383" width="316" height="30"/>
+                                <color key="backgroundColor" red="0.18325528220000001" green="0.36491907890000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="316" id="g7o-VS-sxE"/>
                                     <constraint firstAttribute="height" constant="30" id="xma-A8-6s5"/>
                                 </constraints>
-                                <state key="normal" title="Don't have An account? click here to register:)"/>
+                                <state key="normal" title="Don't have An account? click here to register:)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="Ryi-8l-qdn" kind="presentation" id="QME-PF-isI"/>
                                 </connections>
@@ -42,17 +45,23 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGm-7H-TjA">
                                 <rect key="frame" x="275" y="293" width="50" height="30"/>
+                                <color key="backgroundColor" red="0.18325528220000001" green="0.36491907890000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="l46-v9-w7o"/>
                                 </constraints>
-                                <state key="normal" title="login"/>
+                                <state key="normal" title="login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="loginAction:" destination="HaG-fQ-vca" eventType="touchUpInside" id="qZr-ox-IRF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGM-r6-Nxr">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Cancel"/>
+                                <color key="backgroundColor" red="0.18325528220000001" green="0.36491907890000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="backToPreviousMenu:" destination="HaG-fQ-vca" eventType="touchUpInside" id="Fsl-H1-fiA"/>
                                 </connections>
@@ -260,6 +269,9 @@
                                     <action selector="ValidateCode:" destination="Ryi-8l-qdn" eventType="touchUpInside" id="Cro-Tz-1UI"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="59M-qP-45y">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -267,6 +279,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="OX2-57-qUW" firstAttribute="centerX" secondItem="UaA-RP-6jz" secondAttribute="centerX" id="2g3-Hh-oNY"/>
+                            <constraint firstItem="59M-qP-45y" firstAttribute="centerX" secondItem="UaA-RP-6jz" secondAttribute="centerX" id="5Jo-fk-3R0"/>
+                            <constraint firstItem="59M-qP-45y" firstAttribute="top" secondItem="OX2-57-qUW" secondAttribute="bottom" constant="32" id="60U-Ya-kfm"/>
+                            <constraint firstItem="zKP-ev-McU" firstAttribute="top" secondItem="59M-qP-45y" secondAttribute="bottom" constant="30" id="6ij-Kw-kGD"/>
                             <constraint firstItem="OX2-57-qUW" firstAttribute="top" secondItem="Gnh-th-SMI" secondAttribute="bottom" constant="37" id="9aG-PU-I1z"/>
                             <constraint firstItem="Gnh-th-SMI" firstAttribute="top" secondItem="kgp-v6-bPi" secondAttribute="bottom" constant="31" id="AtA-B6-Qqn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OX2-57-qUW" secondAttribute="trailing" constant="155" id="CNg-bg-TIW">
@@ -302,8 +317,13 @@
                                 <exclude reference="kgp-v6-bPi"/>
                                 <exclude reference="zKP-ev-McU"/>
                                 <exclude reference="OX2-57-qUW"/>
+                                <exclude reference="59M-qP-45y"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="0wX-Fs-Fd8"/>
+                                <exclude reference="lu6-k7-pyB"/>
+                                <exclude reference="p31-PB-J1J"/>
+                                <exclude reference="xIV-ss-I0I"/>
                                 <exclude reference="AtA-B6-Qqn"/>
                                 <exclude reference="Pax-Bk-yDS"/>
                                 <exclude reference="m7I-0u-fdc"/>
@@ -312,14 +332,13 @@
                                 <exclude reference="9aG-PU-I1z"/>
                                 <exclude reference="CNg-bg-TIW"/>
                                 <exclude reference="Pho-dW-iDj"/>
+                                <exclude reference="6ij-Kw-kGD"/>
                                 <exclude reference="Ja2-P2-fhl"/>
                                 <exclude reference="iPb-bJ-WVT"/>
                                 <exclude reference="lqx-d5-4qy"/>
                                 <exclude reference="yZV-2j-Cmx"/>
-                                <exclude reference="0wX-Fs-Fd8"/>
-                                <exclude reference="lu6-k7-pyB"/>
-                                <exclude reference="p31-PB-J1J"/>
-                                <exclude reference="xIV-ss-I0I"/>
+                                <exclude reference="5Jo-fk-3R0"/>
+                                <exclude reference="60U-Ya-kfm"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -328,8 +347,13 @@
                                 <include reference="kgp-v6-bPi"/>
                                 <include reference="zKP-ev-McU"/>
                                 <include reference="OX2-57-qUW"/>
+                                <include reference="59M-qP-45y"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="0wX-Fs-Fd8"/>
+                                <include reference="lu6-k7-pyB"/>
+                                <include reference="p31-PB-J1J"/>
+                                <include reference="xIV-ss-I0I"/>
                                 <include reference="AtA-B6-Qqn"/>
                                 <include reference="Pax-Bk-yDS"/>
                                 <include reference="m7I-0u-fdc"/>
@@ -338,18 +362,18 @@
                                 <include reference="9aG-PU-I1z"/>
                                 <include reference="CNg-bg-TIW"/>
                                 <include reference="Pho-dW-iDj"/>
+                                <include reference="6ij-Kw-kGD"/>
                                 <include reference="Ja2-P2-fhl"/>
                                 <include reference="iPb-bJ-WVT"/>
                                 <include reference="lqx-d5-4qy"/>
                                 <include reference="yZV-2j-Cmx"/>
-                                <include reference="0wX-Fs-Fd8"/>
-                                <include reference="lu6-k7-pyB"/>
-                                <include reference="p31-PB-J1J"/>
-                                <include reference="xIV-ss-I0I"/>
+                                <include reference="5Jo-fk-3R0"/>
+                                <include reference="60U-Ya-kfm"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="59M-qP-45y" id="w8M-kO-EDL"/>
                         <outlet property="inputCode" destination="Gnh-th-SMI" id="XDO-WD-U3e"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="codeValidated" id="lo4-YV-KDj"/>
                     </connections>
@@ -382,22 +406,28 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKL-hM-0oK">
                                 <rect key="frame" x="197" y="293" width="206" height="30"/>
+                                <color key="backgroundColor" red="0.18325528220000001" green="0.36491907890000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="HUK-nr-9Re"/>
                                     <constraint firstAttribute="width" constant="206" id="X7a-5G-zo4"/>
                                 </constraints>
-                                <state key="normal" title="Create Account"/>
+                                <state key="normal" title="Create Account">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="createNewAccount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LOk-Zg-i5C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-9W-00f">
                                 <rect key="frame" x="249" y="365" width="103" height="30"/>
+                                <color key="backgroundColor" red="0.18325528220000001" green="0.36491907890000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kae-9f-Nx5"/>
                                     <constraint firstAttribute="width" constant="103" id="plq-Hg-APd"/>
                                 </constraints>
-                                <state key="normal" title="Cancel"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="dismissSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fmi-WQ-ZbT"/>
                                 </connections>
