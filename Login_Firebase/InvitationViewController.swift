@@ -40,24 +40,19 @@ class InvitationViewController: UIViewController {
     //the method that connect to the firebase database to check whether the code entered is validated or not
     @IBAction func ValidateCode(sender: AnyObject) {
         
-       // self.RetriveInvitationCode()
-        
         self.activityIndicator.hidden = false
         self.activityIndicator.startAnimating()
         
-       // self.compareRetrivedinvitationAndUserinput()
+ 
+            self.RetriveInvitationCode()
         
+        //setting an 4 seconds delay before executing the 2nd method
+        let triggerTime = (Int64(NSEC_PER_SEC) * 4)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
+            self.compareRetrivedinvitationAndUserinput()
+        })
         
-        //make sure we retrieve code first then compare
-        let queue = NSOperationQueue()
-        
-        let retrieve = self.RetriveInvitationCode()
-        let compare = self.compareRetrivedinvitationAndUserinput()
-        
-        compare.addDependency(retrieve)
-        
-        
-       
+      
 
     }
     
@@ -130,9 +125,8 @@ class InvitationViewController: UIViewController {
             let dataDict = snaptshot.value as! [String: AnyObject]
             print(dataDict)
             self.codeRetrived = dataDict["InvitationCode"] as! String
-            
-            print(self.codeRetrived)
-            
+          
+    
         })
     }
     
