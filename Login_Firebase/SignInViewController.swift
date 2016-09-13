@@ -24,7 +24,7 @@ class SignInViewController: UIViewController {
             FIRAuth.auth()?.signInWithEmail(signInEmail.text!, password: signInPassword.text!) {(user, error) in
                 //when the user input the wrong email address or password, ask user to input again
                 if(error != nil){
-                    print("Either the input email address or password is incorrect, place try it again")
+                    print("Either the input email address or password is incorrect, please try it again")
                 }
                 else{
                     print("user with email address "+user!.email!+"is successfully logged in")

@@ -86,6 +86,13 @@ class SignUpNewUserViewController: UIViewController
         
         
         let businessViewController = segue.destinationViewController as! BusinessInitialProfileViewController
+        
+        //debug code to check whether the users uid is generated properly
+        if(userID == ""){
+            print("the user id is nil")
+        
+        }
+        
         businessViewController.Uid = userID
 
     

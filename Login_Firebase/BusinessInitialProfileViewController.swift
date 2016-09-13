@@ -12,7 +12,7 @@ import Firebase
 class BusinessInitialProfileViewController: UIViewController {
     
     //create firebase storage reference
-    let storage = FIRStorage.storage()
+    var StorageRef = FIRDatabase.database().reference()
     
     
     
@@ -25,12 +25,22 @@ class BusinessInitialProfileViewController: UIViewController {
     
     
     @IBOutlet weak var inputName: UITextField!
+    
+    
+    
+
   
     @IBAction func submitBusinessName(sender: AnyObject) {
+        
+        //check whether someone already registered with this names
+        checkWhetherNameExists()
         //sent the current users name associated with the uid to the firebase storage
         
+        //1. create a reference to the storage of the firebase
         
-        storage
+        //set the input name as the data to be uploaded
+        //StorageRef.child("Users").child(Uid).setValue(["Business_Names": inputName])
+        StorageRef.child("users").child(Uid).child("Business_Names").setValue(inputName)
         
         
     }
