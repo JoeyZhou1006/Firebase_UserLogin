@@ -33,26 +33,20 @@ class BusinessInitialProfileViewController: UIViewController {
     @IBAction func submitBusinessName(sender: AnyObject) {
         
         //check whether someone already registered with this names
-        checkWhetherNameExists()
+       // checkWhetherNameExists()
         //sent the current users name associated with the uid to the firebase storage
         
         //1. create a reference to the storage of the firebase
-        
-        //set the input name as the data to be uploaded
-        //StorageRef.child("Users").child(Uid).setValue(["Business_Names": inputName])
-        StorageRef.child("users").child(Uid).child("Business_Names").setValue(inputName)
-        
+
+        //workng code
+        StorageRef.child("businessUsers").child(Uid).child("Business_Names").setValue(inputName.text)
+
         
     }
     
     
     //this function should search through all the business users, and check the child attribute "name" whether exsits or not
-    func checkWhetherNameExists(){
-        
-        
-    
-    
-    }
+
     
     @IBAction func dismissCurrentView(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})

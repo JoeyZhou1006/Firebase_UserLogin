@@ -62,6 +62,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		628DA8D71D8861CC00165D49 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				62ADAEEB1D7EE9D20034A3DA /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		62ADAEDB1D7EE9D20034A3DA = {
 			isa = PBXGroup;
 			children = (
@@ -83,9 +91,9 @@
 		62ADAEE61D7EE9D20034A3DA /* Login_Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				628DA8D71D8861CC00165D49 /* Views */,
 				62ADAEE71D7EE9D20034A3DA /* AppDelegate.swift */,
 				62B369F41D81A02C00C619FA /* Controller */,
-				62ADAEEB1D7EE9D20034A3DA /* Main.storyboard */,
 				62ADAEF11D7EE9D20034A3DA /* Assets.xcassets */,
 				62ADAEF31D7EE9D20034A3DA /* LaunchScreen.storyboard */,
 				62ADAEF61D7EE9D20034A3DA /* Info.plist */,
