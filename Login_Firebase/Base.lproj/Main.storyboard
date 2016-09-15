@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="-485" y="-465"/>
         </scene>
-        <!--View Controller-->
+        <!--Initial View Controller-->
         <scene sceneID="y5E-8G-xp0">
             <objects>
-                <viewController id="w9d-k4-fKR" sceneMemberID="viewController">
+                <viewController id="w9d-k4-fKR" customClass="InitialViewController" customModule="Login_Firebase" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7eh-tR-gRv"/>
                         <viewControllerLayoutGuide type="bottom" id="pIF-LO-277"/>

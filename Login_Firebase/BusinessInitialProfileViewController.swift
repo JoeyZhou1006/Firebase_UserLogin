@@ -24,7 +24,10 @@ class BusinessInitialProfileViewController: UIViewController {
     }
     
     
-    var myGroup = dispatch_group_create()
+    
+      var exists = false
+    
+  
     
     @IBOutlet weak var inputName: UITextField!
     
@@ -45,38 +48,48 @@ class BusinessInitialProfileViewController: UIViewController {
         //workng code
         //save the business names associated to the business users uid under the business users database
 //        
-        
-        //var exsits = false
-      //  var myGroup = dispatch_group_create()
-        
+
+//        let serialQueue = dispatch_queue_create("com.JoeyZhou.Login-Firebase", DISPATCH_QUEUE_SERIAL)
 //        
-//        dispatch_group_enter(myGroup)
-//        exsits = checkWhetherBusinessNameExists()
-//        print("finished request")
-//        print("and the exists should be true");
-//        dispatch_group_leave(myGroup)
-//    
-//        dispatch_group_notify(myGroup, dispatch_get_main_queue(), {
-        var exsits = false
-        exsits = checkWhetherBusinessNameExists()
+//
+//        
+//        dispatch_async(serialQueue) { () -> Void in
+//            
+//            self.checkWhetherBusinessNameExists()
+//            
+//            dispatch_async(dispatch_get_main_queue(), {
+//                if(self.exsits == false){
+//                    self.StorageRef.child("businessUsers").child(self.Uid).child("Business_Names").setValue(self.inputName.text)
+//                    print("the name is not exists")
+//                }
+//                else{
+//                    print("the name is already existsssss")
+//                }
+//            })
+//        }
+       self.checkWhetherBusinessNameExists()
         
-            if(exsits == false){
-                self.StorageRef.child("businessUsers").child(self.Uid).child("Business_Names").setValue(self.inputName.text)
+        let triggerTime = (Int64(NSEC_PER_SEC) * 4)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
+            if(self.exists == false){
+                //self.StorageRef.child("businessUsers").child(self.Uid).child("Business_Names").setValue(self.inputName.text)
                 print("the name is not exists")
             }
             else{
                 print("the name is already existsssss")
             }
 
+        })
+        
+        
+        
+        
         
 
+            
         
-        
-   
-        
-
-        
-    }
+}
+    
     
     
     //this function should search through all the business users, and check the child attribute "name" whether exsits or not
@@ -85,8 +98,9 @@ class BusinessInitialProfileViewController: UIViewController {
     }
     
     
-    func checkWhetherBusinessNameExists()-> Bool{
-        var exists = false
+    func checkWhetherBusinessNameExists(){
+        
+      
         
         
         StorageRef.child("businessUsers").observeSingleEventOfType(FIRDataEventType.Value, withBlock: {(snapshot) in
@@ -101,20 +115,40 @@ class BusinessInitialProfileViewController: UIViewController {
                 if (child.value["Business_Names"] as! String? == self.inputName.text){
                    print("this business name is already occupied")
                     //true value is not inserted properly
-                    exists = true
-                   
+                    self.exists = true
+                    print("should return trueeeeeeeeeeee, while the result is ",self.exists)
                     return
                 }
             }
             
         })
-        
-        print("should return trueeeeeeeeeeee, while the result is ",exists)
-
-        return exists
-    
     }
-    
+//    func checkWhetherBusinessNameExists(){
+//
+//            self.StorageRef.child("businessUsers").observeSingleEventOfType(FIRDataEventType.Value, withBlock: {(snapshot) in
+//                
+//                //if let snapshots = snapshot.children.allObjects
+//                //go through all the business users profile stored in firebase
+//                
+//                for child in snapshot.children{
+//                    
+//                    
+//                    //if the business name is already exists, set exists == true, and jump out of the loop,
+//                    if (child.value["Business_Names"] as! String? == self.inputName.text){
+//                       
+//                            print("this business name is already occupied")
+//                            //true value is not inserted properly
+//                            self.exsits = true
+//                            return
+//                            
+//                        }
+//                }
+//                
+//            })
+//        
+//
+//        
+//            }
     
     
     
