@@ -18,6 +18,9 @@ class SignUpNewUserViewController: UIViewController
     @IBOutlet weak var newUserPassword: UITextField!
     
     
+    @IBOutlet weak var confirmPassword: UITextField!
+    
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var userID=""
@@ -28,6 +31,61 @@ class SignUpNewUserViewController: UIViewController
     
     
     @IBAction func createNewAccount(sender: UIButton) {
+        
+        //test the email address or password whether conform to the firebase authentication standards locally before uploading to firebase to check
+        if(newUserEmail.text == nil || newUserPassword.text?.characters.count < 6){
+            //Create the alert
+            let alert = UIAlertController(title: "Ooppos", message: "password has to be at least 6 characters", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            //create an action (button)
+            let okAction = UIAlertAction(title:"OK", style: .Default, handler:  { action in
+                
+                
+                //when the user tapped the ok button, navigate the user to the business profile page to set up their account
+                print("ok is tapped")
+                self.newUserPassword.text = ""
+                self.confirmPassword.text=""
+                
+                }
+            )
+            
+            //add the action to the alert controller
+            alert.addAction(okAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            
+        
+        }
+            
+        else if (self.newUserPassword.text != self.confirmPassword.text){
+            
+            //Create the alert
+            let alert = UIAlertController(title: "Ooppos", message: "password has to be exactly the same", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            //create an action (button)
+            let okAction = UIAlertAction(title:"OK", style: .Default, handler:  { action in
+                
+                
+                //when the user tapped the ok button, navigate the user to the business profile page to set up their account
+                print("ok is tapped")
+                self.newUserPassword.text = ""
+                self.confirmPassword.text = ""
+                
+                }
+            )
+            
+            //add the action to the alert controller
+            alert.addAction(okAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+
+            
+        
+        
+        
+        }
+        else{
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
         
@@ -74,6 +132,10 @@ class SignUpNewUserViewController: UIViewController
                 
             }
         })
+        
+        }
+        
+        
     }
     
     @IBAction func dismissSignUp(sender: AnyObject) {

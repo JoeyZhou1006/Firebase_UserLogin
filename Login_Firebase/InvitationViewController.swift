@@ -90,7 +90,7 @@ class InvitationViewController: UIViewController {
             print("congratulations, you can start to create your own business page")
             
             //create the alert
-            let alert = UIAlertController(title: "Congratulations!!!", message: "Hey, the future Master cheif, You are the Chosen one, hope the force be with you", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Congratulations!!!", message: "Hey, welcome on board", preferredStyle: UIAlertControllerStyle.Alert)
             
             //create an action
             let okAction = UIAlertAction(title:"ok", style: .Default, handler: { action in
