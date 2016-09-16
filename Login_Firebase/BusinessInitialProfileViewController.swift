@@ -15,12 +15,14 @@ class BusinessInitialProfileViewController: UIViewController {
     let StorageRef = FIRDatabase.database().reference()
     
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //here should have a reference uid of the user
     var Uid = ""
     
     override func viewWillAppear(animated: Bool) {
         print("signed up users uid is "+self.Uid)
+        self.activityIndicator.hidden = true
     }
     
     
@@ -47,26 +49,11 @@ class BusinessInitialProfileViewController: UIViewController {
 
         //workng code
         //save the business names associated to the business users uid under the business users database
-//        
 
-//        let serialQueue = dispatch_queue_create("com.JoeyZhou.Login-Firebase", DISPATCH_QUEUE_SERIAL)
-//        
-//
-//        
-//        dispatch_async(serialQueue) { () -> Void in
-//            
-//            self.checkWhetherBusinessNameExists()
-//            
-//            dispatch_async(dispatch_get_main_queue(), {
-//                if(self.exsits == false){
-//                    self.StorageRef.child("businessUsers").child(self.Uid).child("Business_Names").setValue(self.inputName.text)
-//                    print("the name is not exists")
-//                }
-//                else{
-//                    print("the name is already existsssss")
-//                }
-//            })
-//        }
+        self.exists = false
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
+        
        self.checkWhetherBusinessNameExists()
         
         let triggerTime = (Int64(NSEC_PER_SEC) * 4)
@@ -74,9 +61,60 @@ class BusinessInitialProfileViewController: UIViewController {
             if(self.exists == false){
                 //self.StorageRef.child("businessUsers").child(self.Uid).child("Business_Names").setValue(self.inputName.text)
                 print("the name is not exists")
+                //Create the alert
+                let alert = UIAlertController(title: "Congratulations!!!", message: "The name is not occupied", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                //create an action (button)
+                let okAction = UIAlertAction(title:"OK", style: .Default, handler:  { action in
+                    
+                    
+                    //when the user tapped the ok button, navigate the user to the business profile page to set up their account
+                    print("ok is tapped")
+                    self.navigateToBusinessHomePage()
+                    
+                    }
+                )
+                
+                //add the action to the alert controller
+                alert.addAction(okAction)
+                
+                
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.hidden  = true
+                //present the alert
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+
+                
+                
+                
+                
             }
             else{
                 print("the name is already existsssss")
+                //Create the alert
+                let alert = UIAlertController(title: "Oppposs", message: "The name is already taken", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                //create an action (button)
+                let okAction = UIAlertAction(title:"OK", style: .Default, handler:  { action in
+                    
+                    
+                    //when the user tapped the ok button, navigate the user to the business profile page to set up their account
+                    print("ok is tapped")
+                    self.inputName.text = ""
+                    
+                    }
+                )
+                
+                //add the action to the alert controller
+                alert.addAction(okAction)
+                
+                
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.hidden  = true
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+
             }
 
         })
@@ -100,8 +138,6 @@ class BusinessInitialProfileViewController: UIViewController {
     
     func checkWhetherBusinessNameExists(){
         
-      
-        
         
         StorageRef.child("businessUsers").observeSingleEventOfType(FIRDataEventType.Value, withBlock: {(snapshot) in
            
@@ -123,32 +159,13 @@ class BusinessInitialProfileViewController: UIViewController {
             
         })
     }
-//    func checkWhetherBusinessNameExists(){
-//
-//            self.StorageRef.child("businessUsers").observeSingleEventOfType(FIRDataEventType.Value, withBlock: {(snapshot) in
-//                
-//                //if let snapshots = snapshot.children.allObjects
-//                //go through all the business users profile stored in firebase
-//                
-//                for child in snapshot.children{
-//                    
-//                    
-//                    //if the business name is already exists, set exists == true, and jump out of the loop,
-//                    if (child.value["Business_Names"] as! String? == self.inputName.text){
-//                       
-//                            print("this business name is already occupied")
-//                            //true value is not inserted properly
-//                            self.exsits = true
-//                            return
-//                            
-//                        }
-//                }
-//                
-//            })
-//        
-//
-//        
-//            }
+    
+    
+    func navigateToBusinessHomePage(){
+        self.performSegueWithIdentifier("BusinessHomePage", sender: self)
+    
+    }
+
     
     
     
