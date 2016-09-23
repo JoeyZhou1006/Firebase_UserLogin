@@ -14,7 +14,7 @@ class InvitationViewController: UIViewController {
     
     
     //this function here will validate the invitation code that is being input, if succeed, then use segue to go to the sign in page
-    var ref: FIRDatabaseReference!
+    var ref = FIRDatabase.database().reference()
     
     var refHandle: UInt!
     
@@ -25,8 +25,11 @@ class InvitationViewController: UIViewController {
     
     
     //before the view is being displayed, make the activity indicator hidden
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
+        //ref = FIRDatabase.database().reference()
         self.activityIndicator.isHidden = true
+
     }
     
     
@@ -120,9 +123,10 @@ class InvitationViewController: UIViewController {
         //create a reference to the firebase datbase, retrieve the key value set,
         
         print("talking to the database")
-        ref = FIRDatabase.database().reference()
-        ref.observeSingleEvent(of: .value, with: {
+        ref.child("InvitationCode").observeSingleEvent(of: .value, with: {
             (snapshot) in
+            
+            print("inside observesingle event method=======================")
             if(!snapshot.exists()){
                 print("the snap shot doesn't exist")
                 return
@@ -132,7 +136,7 @@ class InvitationViewController: UIViewController {
             //retrieve all the data sets in the database
             let dataDict = snapshot.value as! [String: AnyObject]
             print(dataDict)
-            self.codeRetrived = dataDict["InvitationCode"] as! String
+            self.codeRetrived = dataDict["Invitation1"] as! String
             
             print("the retrieved code is",self.codeRetrived)
                 
@@ -140,6 +144,15 @@ class InvitationViewController: UIViewController {
           
     
         })
+        
+        
+        
+//        var refHandle = ref.observe(FIRDataEventType.value, with: { (snapshot) in
+//            let postDict = snapshot.value as! [String : AnyObject]
+//            // ...
+//            print(postDict["InvitationCode"] as! String)
+//            self.codeRetrived = postDict["InvitationCode"] as! String
+//        })
     }
     
     

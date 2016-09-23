@@ -141,7 +141,7 @@ class BusinessInitialProfileViewController: UIViewController {
     func checkWhetherBusinessNameExists(){
         
         
-        StorageRef.child("businessUsers").observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+        StorageRef.child("Users").child("businessUsers").observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
             
             if(snapshot.hasChild(self.inputName.text!)){
                 self.exists = true
