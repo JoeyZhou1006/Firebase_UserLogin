@@ -9,6 +9,17 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 class SignUpNewUserViewController: UIViewController
 {
@@ -25,20 +36,20 @@ class SignUpNewUserViewController: UIViewController
     
     var userID=""
     
-    override func viewWillAppear(animated: Bool) {
-        self.activityIndicator.hidden = true
+    override func viewWillAppear(_ animated: Bool) {
+        self.activityIndicator.isHidden = true
     }
     
     
-    @IBAction func createNewAccount(sender: UIButton) {
+    @IBAction func createNewAccount(_ sender: UIButton) {
         
         //test the email address or password whether conform to the firebase authentication standards locally before uploading to firebase to check
         if(newUserEmail.text == nil || newUserPassword.text?.characters.count < 6){
             //Create the alert
-            let alert = UIAlertController(title: "Ooppos", message: "password has to be at least 6 characters", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Ooppos", message: "password has to be at least 6 characters", preferredStyle: UIAlertControllerStyle.alert)
             
             //create an action (button)
-            let okAction = UIAlertAction(title:"OK", style: .Default, handler:  { action in
+            let okAction = UIAlertAction(title:"OK", style: .default, handler:  { action in
                 
                 
                 //when the user tapped the ok button, navigate the user to the business profile page to set up their account
@@ -52,7 +63,7 @@ class SignUpNewUserViewController: UIViewController
             //add the action to the alert controller
             alert.addAction(okAction)
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             
             
         
@@ -61,10 +72,10 @@ class SignUpNewUserViewController: UIViewController
         else if (self.newUserPassword.text != self.confirmPassword.text){
             
             //Create the alert
-            let alert = UIAlertController(title: "Ooppos", message: "password has to be exactly the same", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Ooppos", message: "password has to be exactly the same", preferredStyle: UIAlertControllerStyle.alert)
             
             //create an action (button)
-            let okAction = UIAlertAction(title:"OK", style: .Default, handler:  { action in
+            let okAction = UIAlertAction(title:"OK", style: .default, handler:  { action in
                 
                 
                 //when the user tapped the ok button, navigate the user to the business profile page to set up their account
@@ -78,7 +89,7 @@ class SignUpNewUserViewController: UIViewController
             //add the action to the alert controller
             alert.addAction(okAction)
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
 
             
         
@@ -86,25 +97,49 @@ class SignUpNewUserViewController: UIViewController
         
         }
         else{
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        FIRAuth.auth()?.createUserWithEmail(newUserEmail.text!, password: newUserPassword.text!, completion: { (user: FIRUser?, error) in
+        FIRAuth.auth()?.createUser(withEmail: newUserEmail.text!, password: newUserPassword.text!, completion: { (user: FIRUser?, error) in
             if error != nil {
                 print(error)
                 
-                let alert = UIAlertController(title: "Opposs", message: "Seems like some one already registered with this account", preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "Opposs", message: "Seems like some one already registered with this account", preferredStyle: UIAlertControllerStyle.alert)
                 
-                self.presentViewController(alert, animated: true, completion: nil)
+                
+                
+                //create an action (button)
+                let okAction = UIAlertAction(title:"OK", style: .default, handler:  { action in
+                    
+                    
+                    //when the user tapped the ok button, navigate the user to the business profile page to set up their account
+                    print("ok is tapped")
+                    
+                    
+                    }
+                )
+                
+                alert.addAction(okAction)
+                
+                //show the alert
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.present(alert, animated: true, completion: nil)
+                
+                
+                
+                
+                
+                self.present(alert, animated: true, completion: nil)
                 return
             }
             else{
             
                 //Create the alert
-                let alert = UIAlertController(title: "Congratulations!!!", message: "You are successfully registered with us :D ", preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "Congratulations!!!", message: "You are successfully registered with us :D ", preferredStyle: UIAlertControllerStyle.alert)
                 
                 //create an action (button)
-                let okAction = UIAlertAction(title:"OK", style: .Default, handler:  { action in
+                let okAction = UIAlertAction(title:"OK", style: .default, handler:  { action in
                     
                     
                     //when the user tapped the ok button, navigate the user to the business profile page to set up their account
@@ -121,8 +156,8 @@ class SignUpNewUserViewController: UIViewController
                 alert.addAction(okAction)
                 //show the alert
                 self.activityIndicator.stopAnimating()
-                self.activityIndicator.hidden = true
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.activityIndicator.isHidden = true
+                self.present(alert, animated: true, completion: nil)
                 
                 //should pass users UID to the next view
                 print(user!.uid)
@@ -138,16 +173,16 @@ class SignUpNewUserViewController: UIViewController
         
     }
     
-    @IBAction func dismissSignUp(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+    @IBAction func dismissSignUp(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: {})
     }
     
     
     //prepare the user's uid to be sent to the next view which is the business initial profile view controller
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
-        let businessViewController = segue.destinationViewController as! BusinessInitialProfileViewController
+        let businessViewController = segue.destination as! BusinessInitialProfileViewController
         
         //debug code to check whether the users uid is generated properly
         if(userID == ""){
@@ -164,7 +199,7 @@ class SignUpNewUserViewController: UIViewController
     
     //the function that does the action that navigate to the yours profile page
     func navigateToBusinessProfile(){
-        self.performSegueWithIdentifier("businessInitialProfileSegue", sender: self)
+        self.performSegue(withIdentifier: "businessInitialProfileSegue", sender: self)
     
     }
     

@@ -13,7 +13,7 @@ class FoodArenaViewController: UITabBarController {
     
     @IBOutlet weak var userUID: UILabel!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         userUID.text = Uid
         
     }

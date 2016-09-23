@@ -20,9 +20,9 @@ class BusinessInitialProfileViewController: UIViewController {
     //here should have a reference uid of the user
     var Uid = ""
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         print("signed up users uid is "+self.Uid)
-        self.activityIndicator.hidden = true
+        self.activityIndicator.isHidden = true
     }
     
     
@@ -37,7 +37,7 @@ class BusinessInitialProfileViewController: UIViewController {
     
 
   
-    @IBAction func submitBusinessName(sender: AnyObject) {
+    @IBAction func submitBusinessName(_ sender: AnyObject) {
         
         //check whether someone already registered with this names
         
@@ -51,21 +51,23 @@ class BusinessInitialProfileViewController: UIViewController {
         //save the business names associated to the business users uid under the business users database
 
         self.exists = false
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
        self.checkWhetherBusinessNameExists()
         
         let triggerTime = (Int64(NSEC_PER_SEC) * 4)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(triggerTime) / Double(NSEC_PER_SEC), execute: { () -> Void in
             if(self.exists == false){
-                //self.StorageRef.child("businessUsers").child(self.Uid).child("Business_Names").setValue(self.inputName.text)
+                //self.StorageRef.child("Users").child("businessUsers").child(self.Uid).child("Business_Names").setValue(self.inputName.text)
+                //add business user in a json format data,(Users/businessUsers/foodArena/addedByUser)
+            self.StorageRef.child("Users").child("businessUsers").child(self.inputName.text!).child("addedByUser").setValue(self.Uid)
                 print("the name is not exists")
                 //Create the alert
-                let alert = UIAlertController(title: "Congratulations!!!", message: "The name is not occupied", preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "Congratulations!!!", message: "The name is not occupied", preferredStyle: UIAlertControllerStyle.alert)
                 
                 //create an action (button)
-                let okAction = UIAlertAction(title:"OK", style: .Default, handler:  { action in
+                let okAction = UIAlertAction(title:"OK", style: .default, handler:  { action in
                     
                     
                     //when the user tapped the ok button, navigate the user to the business profile page to set up their account
@@ -80,9 +82,9 @@ class BusinessInitialProfileViewController: UIViewController {
                 
                 
                 self.activityIndicator.stopAnimating()
-                self.activityIndicator.hidden  = true
+                self.activityIndicator.isHidden  = true
                 //present the alert
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
                 
 
                 
@@ -93,10 +95,10 @@ class BusinessInitialProfileViewController: UIViewController {
             else{
                 print("the name is already existsssss")
                 //Create the alert
-                let alert = UIAlertController(title: "Oppposs", message: "The name is already taken", preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "Oppposs", message: "The name is already taken", preferredStyle: UIAlertControllerStyle.alert)
                 
                 //create an action (button)
-                let okAction = UIAlertAction(title:"OK", style: .Default, handler:  { action in
+                let okAction = UIAlertAction(title:"OK", style: .default, handler:  { action in
                     
                     
                     //when the user tapped the ok button, navigate the user to the business profile page to set up their account
@@ -111,8 +113,8 @@ class BusinessInitialProfileViewController: UIViewController {
                 
                 
                 self.activityIndicator.stopAnimating()
-                self.activityIndicator.hidden  = true
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.activityIndicator.isHidden  = true
+                self.present(alert, animated: true, completion: nil)
                 
 
             }
@@ -131,38 +133,32 @@ class BusinessInitialProfileViewController: UIViewController {
     
     
     //this function should search through all the business users, and check the child attribute "name" whether exsits or not
-    @IBAction func dismissCurrentView(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+    @IBAction func dismissCurrentView(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: {})
     }
     
     
     func checkWhetherBusinessNameExists(){
         
         
-        StorageRef.child("businessUsers").observeSingleEventOfType(FIRDataEventType.Value, withBlock: {(snapshot) in
-           
-            //if let snapshots = snapshot.children.allObjects
-            //go through all the business users profile stored in firebase
+        StorageRef.child("businessUsers").observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
             
-            for child in snapshot.children{
-                
-                
-                //if the business name is already exists, set exists == true, and jump out of the loop,
-                if (child.value["Business_Names"] as! String? == self.inputName.text){
-                   print("this business name is already occupied")
-                    //true value is not inserted properly
-                    self.exists = true
-                    print("should return trueeeeeeeeeeee, while the result is ",self.exists)
-                    return
-                }
+            if(snapshot.hasChild(self.inputName.text!)){
+                self.exists = true
+                print("the name is already been taken")
             }
+            else{
+                print("the name is not occupied")
+            
+            }
+           
             
         })
     }
     
     
     func navigateToBusinessHomePage(){
-        self.performSegueWithIdentifier("BusinessHomePage", sender: self)
+        self.performSegue(withIdentifier: "BusinessHomePage", sender: self)
     
     }
 

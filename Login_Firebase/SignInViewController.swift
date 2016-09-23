@@ -20,11 +20,11 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInPassword: UITextField!
     
     
-    @IBAction func loginAction(sender: AnyObject) {
+    @IBAction func loginAction(_ sender: AnyObject) {
         //when the user input both email address field and password field
         if (signInEmail.text != nil && signInPassword.text != nil) {
             //connect to the firebase and check the existence of this account
-            FIRAuth.auth()?.signInWithEmail(signInEmail.text!, password: signInPassword.text!) {(user, error) in
+            FIRAuth.auth()?.signIn(withEmail: signInEmail.text!, password: signInPassword.text!) {(user, error) in
                 //when the user input the wrong email address or password, ask user to input again
                 if(error != nil){
                     print("Either the input email address or password is incorrect, please try it again")
@@ -38,9 +38,9 @@ class SignInViewController: UIViewController {
     }
     
     
-    @IBAction func backToPreviousMenu(sender: AnyObject) {
+    @IBAction func backToPreviousMenu(_ sender: AnyObject) {
         
-        self.dismissViewControllerAnimated(true, completion: {})
+        self.dismiss(animated: true, completion: {})
     }
     
     
