@@ -18,6 +18,8 @@ class SignInViewController: UIViewController {
 
     @IBOutlet weak var signInPassword: UITextField!
     
+    
+    
     var ref = FIRDatabase.database().reference()
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
