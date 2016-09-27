@@ -176,7 +176,61 @@
                     <view key="view" contentMode="scaleToFill" id="e30-mQ-EZp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="a3z-ki-g94">
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="BKh-qy-13r"/>
+                                    <constraint firstAttribute="height" constant="100" id="Xwe-wX-Zwe"/>
+                                </constraints>
+                                <state key="normal" title="Manage Food">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="q45-xH-Dmk">
+                                <color key="backgroundColor" red="0.99835759401321411" green="0.40173164919595106" blue="0.95776614341549793" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="CpV-5i-WgE"/>
+                                    <constraint firstAttribute="width" constant="100" id="rid-IM-0uz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                <state key="normal" title="Manage Business Information">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="M0e-Gx-1vJ">
+                                <color key="backgroundColor" red="0.41724538772407749" green="0.99835759401321411" blue="0.6862354042734683" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="KUo-Tt-47u"/>
+                                    <constraint firstAttribute="width" constant="100" id="joj-HP-Deu"/>
+                                </constraints>
+                                <state key="normal" title="Account Settings"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="apR-db-uhd">
+                                <color key="backgroundColor" red="0.99835759401321411" green="0.48946823611394547" blue="0.47777438666769789" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="5BL-Ol-nt2"/>
+                                    <constraint firstAttribute="width" constant="100" id="61z-kD-Qly"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <state key="normal" title="Manage Orders">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="apR-db-uhd" firstAttribute="bottom" secondItem="a3z-ki-g94" secondAttribute="bottom" id="5Et-qB-XWj"/>
+                            <constraint firstItem="a3z-ki-g94" firstAttribute="top" secondItem="Uh0-ml-qAJ" secondAttribute="bottom" constant="76" id="EzI-6m-Bfx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M0e-Gx-1vJ" secondAttribute="trailing" constant="46" id="Mgx-S1-di4"/>
+                            <constraint firstItem="a3z-ki-g94" firstAttribute="leading" secondItem="e30-mQ-EZp" secondAttribute="leadingMargin" constant="46" id="OMf-Pa-lzF"/>
+                            <constraint firstItem="q45-xH-Dmk" firstAttribute="leading" secondItem="e30-mQ-EZp" secondAttribute="leadingMargin" constant="46" id="cPm-c9-7Cy"/>
+                            <constraint firstItem="M0e-Gx-1vJ" firstAttribute="bottom" secondItem="q45-xH-Dmk" secondAttribute="bottom" id="e4D-lf-Amu"/>
+                            <constraint firstItem="apR-db-uhd" firstAttribute="leading" secondItem="a3z-ki-g94" secondAttribute="trailing" constant="51" id="kDr-dH-pAV"/>
+                            <constraint firstItem="q45-xH-Dmk" firstAttribute="top" secondItem="a3z-ki-g94" secondAttribute="bottom" constant="49" id="sXb-oM-0ur"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="apR-db-uhd" secondAttribute="trailing" constant="46" id="vHi-8U-DCO"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2FX-9O-YRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,9 +306,8 @@
                                 <exclude reference="kgp-v6-bPi"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="0wX-Fs-Fd8"/>
-                                <exclude reference="lu6-k7-pyB"/>
-                                <exclude reference="xIV-ss-I0I"/>
+                                <exclude reference="5Jo-fk-3R0"/>
+                                <exclude reference="60U-Ya-kfm"/>
                                 <exclude reference="AtA-B6-Qqn"/>
                                 <exclude reference="Pax-Bk-yDS"/>
                                 <exclude reference="m7I-0u-fdc"/>
@@ -263,8 +316,9 @@
                                 <exclude reference="9aG-PU-I1z"/>
                                 <exclude reference="CNg-bg-TIW"/>
                                 <exclude reference="Pho-dW-iDj"/>
-                                <exclude reference="5Jo-fk-3R0"/>
-                                <exclude reference="60U-Ya-kfm"/>
+                                <exclude reference="0wX-Fs-Fd8"/>
+                                <exclude reference="lu6-k7-pyB"/>
+                                <exclude reference="xIV-ss-I0I"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -275,9 +329,8 @@
                                 <include reference="kgp-v6-bPi"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="0wX-Fs-Fd8"/>
-                                <include reference="lu6-k7-pyB"/>
-                                <include reference="xIV-ss-I0I"/>
+                                <include reference="5Jo-fk-3R0"/>
+                                <include reference="60U-Ya-kfm"/>
                                 <include reference="AtA-B6-Qqn"/>
                                 <include reference="Pax-Bk-yDS"/>
                                 <include reference="m7I-0u-fdc"/>
@@ -286,8 +339,9 @@
                                 <include reference="9aG-PU-I1z"/>
                                 <include reference="CNg-bg-TIW"/>
                                 <include reference="Pho-dW-iDj"/>
-                                <include reference="5Jo-fk-3R0"/>
-                                <include reference="60U-Ya-kfm"/>
+                                <include reference="0wX-Fs-Fd8"/>
+                                <include reference="lu6-k7-pyB"/>
+                                <include reference="xIV-ss-I0I"/>
                             </mask>
                         </variation>
                     </view>
@@ -447,15 +501,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMZ-eO-5Lo">
-                                <color key="backgroundColor" red="0.18325528220000001" green="0.36491907890000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismissCurrentView:" destination="3b1-CF-OS4" eventType="touchUpInside" id="Udv-m7-fIW"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sFY-it-RHh"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txo-4S-fdR">
                                 <color key="backgroundColor" red="0.18325528220000001" green="0.36491907890000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -481,21 +526,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="X7B-BK-iu9" secondAttribute="trailing" constant="15" id="EjB-fP-S05">
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                             </constraint>
-                            <constraint firstItem="lMZ-eO-5Lo" firstAttribute="leading" secondItem="qlQ-ya-peb" secondAttribute="leadingMargin" constant="139" id="QEo-V5-B86">
-                                <variation key="heightClass=regular-widthClass=compact" constant="13"/>
-                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="txo-4S-fdR" secondAttribute="trailing" constant="12" id="Qha-hK-Zfu"/>
                             <constraint firstItem="X7B-BK-iu9" firstAttribute="top" secondItem="GLI-4n-zRM" secondAttribute="bottom" constant="52" id="RSo-G0-I36"/>
                             <constraint firstItem="X7B-BK-iu9" firstAttribute="leading" secondItem="qlQ-ya-peb" secondAttribute="leadingMargin" constant="10" id="Ria-Fs-30f"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lMZ-eO-5Lo" secondAttribute="trailing" constant="173" id="Uee-zg-22j">
-                                <variation key="heightClass=regular-widthClass=compact" constant="13"/>
-                            </constraint>
                             <constraint firstItem="txo-4S-fdR" firstAttribute="top" secondItem="X7B-BK-iu9" secondAttribute="bottom" constant="58" id="eUp-3R-ONQ"/>
                             <constraint firstItem="IXV-Gm-Wlv" firstAttribute="top" secondItem="y3Q-oV-NWp" secondAttribute="bottom" constant="25" id="eej-PT-J2r"/>
                             <constraint firstItem="IXV-Gm-Wlv" firstAttribute="centerX" secondItem="qlQ-ya-peb" secondAttribute="centerX" id="k7J-4n-Nob"/>
-                            <constraint firstItem="lMZ-eO-5Lo" firstAttribute="centerX" secondItem="qlQ-ya-peb" secondAttribute="centerX" id="kfM-Oz-iiC"/>
                             <constraint firstItem="GLI-4n-zRM" firstAttribute="centerX" secondItem="qlQ-ya-peb" secondAttribute="centerX" id="l88-M6-kDF"/>
-                            <constraint firstItem="lMZ-eO-5Lo" firstAttribute="top" secondItem="txo-4S-fdR" secondAttribute="bottom" constant="76" id="n2A-kC-406"/>
                             <constraint firstItem="GLI-4n-zRM" firstAttribute="leading" secondItem="qlQ-ya-peb" secondAttribute="leadingMargin" constant="10" id="nWH-EJ-FL6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IXV-Gm-Wlv" secondAttribute="trailing" constant="121" id="p9G-jU-nbV">
                                 <variation key="heightClass=regular-widthClass=compact" constant="50"/>
@@ -507,7 +544,6 @@
                             <mask key="subviews">
                                 <exclude reference="X7B-BK-iu9"/>
                                 <exclude reference="GLI-4n-zRM"/>
-                                <exclude reference="lMZ-eO-5Lo"/>
                                 <exclude reference="sFY-it-RHh"/>
                             </mask>
                             <mask key="constraints">
@@ -527,10 +563,6 @@
                                 <exclude reference="RSo-G0-I36"/>
                                 <exclude reference="Ria-Fs-30f"/>
                                 <exclude reference="uC2-sI-j0q"/>
-                                <exclude reference="QEo-V5-B86"/>
-                                <exclude reference="Uee-zg-22j"/>
-                                <exclude reference="kfM-Oz-iiC"/>
-                                <exclude reference="n2A-kC-406"/>
                                 <exclude reference="2b9-AZ-M0u"/>
                                 <exclude reference="CP6-dc-c3a"/>
                             </mask>
@@ -539,7 +571,6 @@
                             <mask key="subviews">
                                 <include reference="X7B-BK-iu9"/>
                                 <include reference="GLI-4n-zRM"/>
-                                <include reference="lMZ-eO-5Lo"/>
                                 <include reference="sFY-it-RHh"/>
                             </mask>
                             <mask key="constraints">
@@ -559,10 +590,6 @@
                                 <include reference="RSo-G0-I36"/>
                                 <include reference="Ria-Fs-30f"/>
                                 <include reference="uC2-sI-j0q"/>
-                                <include reference="QEo-V5-B86"/>
-                                <include reference="Uee-zg-22j"/>
-                                <include reference="kfM-Oz-iiC"/>
-                                <include reference="n2A-kC-406"/>
                                 <include reference="2b9-AZ-M0u"/>
                                 <include reference="CP6-dc-c3a"/>
                             </mask>
@@ -695,6 +722,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pZI-Xh-EfX"/>
+        <segue reference="mZY-MI-XiG"/>
     </inferredMetricsTieBreakers>
 </document>
